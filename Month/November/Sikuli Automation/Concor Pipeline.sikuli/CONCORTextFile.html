@@ -1,0 +1,111 @@
+
+<html>
+   <head>
+      <style type="text/css">
+         .sikuli-code {
+            font-size: 20px;
+            font-family: "Osaka-mono", Monospace;
+            line-height: 1.5em;
+            display:table-cell;
+            white-space: pre-wrap;       /* css-3 */
+            white-space: -moz-pre-wrap !important;  /* Mozilla, since 1999 */
+            white-space: -pre-wrap;      /* Opera 4-6 */
+            white-space: -o-pre-wrap;    /* Opera 7 */
+            word-wrap: break-word;       /* Internet Explorer 5.5+ */
+            width: 99%;   /* remove horizontal scroll-bar when viewing in IE7 */
+         }
+         .sikuli-code img {
+            vertical-align: middle;
+            margin: 2px;
+            border: 1px solid #ccc;
+            padding: 2px;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -moz-box-shadow: 1px 1px 1px gray;
+            -webkit-box-shadow: 1px 1px 2px gray;
+         }
+         .kw {
+            color: blue;
+         }
+         .skw {
+            color: rgb(63, 127, 127);
+         }
+
+         .str {
+            color: rgb(128, 0, 0);
+         }
+
+         .dig {
+            color: rgb(128, 64, 0);
+         }
+
+         .cmt {
+            color: rgb(200, 0, 200);
+         }
+
+         h2 {
+            display: inline;
+            font-weight: normal;
+         }
+
+         .info {
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+            display: none;
+         }
+
+         a {
+            color: #9D2900;
+         }
+
+         body {
+            font-family: "Trebuchet MS", Arial, Sans-Serif;
+         }
+
+      </style>
+   </head>
+<body>
+<div class="info">
+<h2>CONCORTextFile.sikuli</h2> <a href="CONCORTextFile.zip">(Download this script)</a>
+</div>
+<pre class="sikuli-code">
+a=[<span class="dig">75</span>]
+<span class="kw">for</span> i <span class="kw">in</span> a:
+    <span class="cmt"># 68, 74, 75</span>
+    App(<span class="str">'Uci6'</span>).focus()
+    <span class="skw">type</span>(<span class="str">"f"</span>,KeyModifier.CTRL)
+    <span class="skw">wait</span>(<span class="dig">1</span>)
+    <span class="skw">type</span>(<span class="str">"D:\\ISB\\V2\\"</span>+str(i)+<span class="str">"\\CONCOR\\"</span>)
+    <span class="skw">click</span>(<img src="1480620083223.png" />)
+    <span class="skw">click</span>(<img src="1480617320011.png" />)
+    <span class="skw">wait</span>(<span class="dig">1</span>)
+    <span class="skw">click</span>(<img src="1480617365233.png" />)
+    <span class="skw">click</span>(<img src="2.png" />)
+    <span class="skw">click</span>(<img src="1.png" />)
+    <span class="skw">click</span>(<img src="3.png" />)
+    <span class="skw">wait</span>(<span class="dig">1</span>)
+    <span class="skw">click</span>(Pattern(<img src="1480618017082.png" />).targetOffset(-<span class="dig">63</span>,-<span class="dig">119</span>))
+    <span class="skw">type</span>(<span class="str">"a"</span>,KeyModifier.CTRL)
+    <span class="skw">type</span>(<span class="str">"D:\\ISB\\V2\\"</span>+str(i)+<span class="str">"\\Sum\\SUM.##h"</span>)
+    <span class="skw">click</span>(<img src="1480618295382.png" />)
+    notepad=App(<span class="str">"notepad"</span>)
+    <span class="kw">while</span> True:
+       <span class="kw">if</span> notepad.isRunning():
+           notepad.focus()
+           <span class="skw">click</span>(Pattern(<img src="1480631027863.png" />).targetOffset(-<span class="dig">88</span>,-<span class="dig">4</span>))
+           <span class="skw">wait</span>(<span class="dig">1</span>)
+
+           <span class="skw">click</span>(Pattern(<img src="1480631100587.png" />).targetOffset(-<span class="dig">41</span>,-<span class="dig">8</span>))
+           <span class="skw">click</span>(Pattern(<img src="1480631782828.png" />).targetOffset(-<span class="dig">104</span>,-<span class="dig">15</span>))
+
+           <span class="skw">type</span>(<span class="str">"a"</span>,KeyModifier.CTRL)
+           <span class="skw">type</span>(<span class="str">"D:\\ISB\\V2\\"</span>+str(i)+<span class="str">"\\CONCOR\\Concor.txt"</span>)
+           <span class="skw">click</span>(Pattern(<img src="1480631275305.png" />).targetOffset(<span class="dig">63</span>,-<span class="dig">6</span>))
+
+           notepad.close()
+           <span class="kw">break</span>;
+    <span class="skw">click</span>(Pattern(<img src="1480632228962.png" />).targetOffset(<span class="dig">134</span>,<span class="dig">31</span>))
+</pre>
+</body>
+</html>
