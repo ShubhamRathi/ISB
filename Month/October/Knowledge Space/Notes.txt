@@ -1,0 +1,25 @@
+Objective: Check for Mapping in GVKEY-> ASGNUM
+
+Datasets: 
+
+final_file1_dist_asgnum_allgvkeys_join_NBER_pdpass_name.csv -> Remove(Company Names, Standard Name, PDPASS) -> Created(Modified.csv). Defective entries removed (Company names in place of PDPASS, years etc). Created: Pruned.csv. Remove duplicate rows. 
+
+Algorithm:
+
+for row1 in 816 companies:
+	for row2 in Prasad's file:
+		if row1(gvkey)==row2(gvkey{1/2/3/4})
+			if year match:
+				match
+			else:
+				partial match
+
+Results:
+
+Fully Matched: 147 [18.0147058824%]
+Parlially Matched: 503 [61.6421568627%]
+Unmatched: 166 [20.3431372549%]
+
+Salient points:
+1. 102 rows have Company names in place of PDPASS - Eliminated from calculation
+2. 1 AsgNum to multiple PDPASS
