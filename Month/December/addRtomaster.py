@@ -1,6 +1,6 @@
 import pandas as pd
 
-master = pd.read_csv('Master.csv')
+master = pd.read_csv('MasterwithR.csv')
 results = pd.read_csv('results.csv')
 
 i=0
