@@ -1,42 +1,41 @@
 import pandas as pd
 import csv
 
-joined = pd.read_csv('joinfinal.csv')
+joined = pd.read_csv('x.csv')
 target = pd.read_csv('816_assign_patent_expand.csv')
 acq = pd.read_csv('Acquirer_Assignees.csv')
-
-save=[]
+merged=[]
 for index, row in target.iterrows():
-	comp=[]
-	pats=[]
-	gvkey=row['gvkey']
-	year=int(row['deal year'])
-	# print list(joined[(joined.gvkey_x==gvkey) & (joined.year_y >= year-3) & (joined.year_y <= year)]['gvkey_y'])
-	comp=list(joined[(joined.gvkey_x==gvkey) & (joined.year_y >= year-3) & (joined.year_y <= year)]['gvkey_y'])
-	pats=list(joined[(joined.gvkey_x==gvkey)]['cited_y'])
-	# comp.append(gvkey)
-	comp=list(set(comp))
-	pats=list(set(pats))
-	with open('Info.csv', 'a') as myfile:
-		writer = csv.writer(myfile, dialect='excel')
-		row=[gvkey, len(pats), comp]
-		writer.writerow(row)
+	merged.append((int(row['gvkey']), int(row['deal year'])))
 
 for index, row in acq.iterrows():
+	merged.append((int(row['gvkey']), int(row['deal year'])))
+
+merged=list(set(merged))
+
+file=[]
+count=0
+for row in merged:
 	comp=[]
 	pats=[]
-	gvkey=row['gvkey']
-	year=int(row['deal year'])
+	gvkey=row[0]
+	year=int(row[1])
 	# print list(joined[(joined.gvkey_x==gvkey) & (joined.year_y >= year-3) & (joined.year_y <= year)]['gvkey_y'])
-	comp=list(joined[(joined.gvkey_x==gvkey) & (joined.year_y >= year-3) & (joined.year_y <= year)]['gvkey_y'])
-	pats=list(joined[(joined.gvkey_x==gvkey)]['cited_y'])
+	# print gvkey, year
+	comp=list(joined[(joined.gvkey==gvkey) & (joined.gyear >= year-3) & (joined.gyear <= year)]['gvkey_final'])
+	pats=list(joined[(joined.gvkey==gvkey) & (joined.gyear >= year-3) & (joined.gyear <= year)]['patent_y'])
 	# comp.append(gvkey)
 	comp=list(set(comp))
 	pats=list(set(pats))
-	with open('Info.csv', 'a') as myfile:
-		writer = csv.writer(myfile, dialect='excel')
-		row=[gvkey, len(pats), comp]
-		writer.writerow(row)
+	entry=[gvkey, year, len(pats), sorted(comp)]
+	if entry not in file and comp != [] and comp != [gvkey]:
+		print "Written 1 to file"
+		count=count+1
+		file.append(entry)
+
+with open("output.csv", "wb") as f:
+    writer = csv.writer(f)
+    writer.writerows(file)
 
 
 # Info = pd.read_csv('Info.csv')
