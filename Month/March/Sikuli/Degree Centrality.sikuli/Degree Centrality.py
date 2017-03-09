@@ -1,5 +1,5 @@
 import os
-path = 'D:\\Sandeep\\Intel\\'
+path = 'D:\\Sandeep\\Cisco\\'
 files = os.listdir(path)
 for f in files:
     f = str(f)
@@ -9,7 +9,7 @@ for f in files:
     click(Pattern("1488787044063.png").targetOffset(-103,-15))    
     wait(1)
     type("a",KeyModifier.CTRL)
-    type("D:\\Sandeep\\Intel\\" + str(f) + Key.ENTER)
+    type("D:\\Sandeep\\Cisco\\" + str(f) + Key.ENTER)
     click(Pattern("1488754505777.png").targetOffset(-8,-3))
     click("1488805796309.png")
     click("Screenshot_1.png")
