@@ -1,0 +1,76 @@
+Documentation for Files from Oct (‘16)-March(‘17)
+
+October:
+
+Knowledge Space: 
+
+2.py
+
+Find focal deal year from 816_assgn_patent.csv
+Map that corresponding deal year to the deal period in the file you've sent me.
+Find the number of matches ( if gvkey from 816_assgn_patent.csv == gvkey in Prasad's file)
+
+Product Space:
+
+consistency.py
+
+Checks the intersection in the product space companies and aacquirer space companies
+
+November:
+
+The task is:
+
+1.       Create Network Matrix for Target from 816_taget_gvkeys.csv (Target Matrix)
+2.       Find corresponding Acquirer from Master (Acquirer Matrix)
+3.       NewMatrix= [Target Matrix] + [Acquirer Matrix]T
+4.       Structural Equivalence procedure on NewMatrix
+5.       Repeat 1-4 for all targets
+
+
+Sikuli Scripts:
+
+Concor Pipeline.sikuli: Run CONCOR procedure
+Load Targets.sikuli: Load Targets (convert to ##h, ##d from DL files)
+Sum Pipeline.sikuli: Load the summed up matrix & 
+Load Acquirer.sikuli: Load Acq (convert to ##h, ##d from DL files)
+
+Utility Scripts:
+
+add.py: Sum of NewMatrix= [Target Matrix] + [Acquirer Matrix]T
+
+December:
+
+Work on TNIC Data, returned the master file. 
+
+add4columnstomaster.py: Add Acq Density, Target Density & TNIC scores to Master File. 
+addavgs.py:TNIC data is available over a few years. We needed last 3. Add it to master under ‘TNIC 3 years avg’. Note
+
+1. Companies which have no mention in TNIC have been written to as 'No Data'
+2. Column 'TNIC 3 year Avg' mentions the past 3 year average and 'TNIC > 3 year Avg' mentions the average of 3+ years. Attempt is to get value for both columns. Which is, even if a company has TNIC scores for past 3 years, I have nonetheless calculated the TNIC average for 3+ years and mentioned it in TNIC > 3 year Avg for use now or in future. If no use, please ignore. 
+3. Column Total <= 3 years mentions the number of years that were taken for average for past 3 year scores. Total > 3 years mentions the number of years that were taken for average for 3+ years. 
+4. Column 3 Years Considered mentions which three year scores were taken for TNIC 3 year Avg. Similarly, > 3 years Considered mentions which 3+ year scores were taken for TNIC > 3 year Avg.
+5. Column R mentions the consistency score. 
+6. Columns 'UCI Acq Density' and 'UCI Target Density' mention the respective densities from UCI procedure. 
+     
+addRtomaster.py: Add R value to Master file
+demo.py: Finding how much time it takes to find mapping between TNIC & 	Master file      
+makedlv5.py: Make DL file
+checkpdpco.py: Testing if we have strong mapping between pdpco (Pdpco is suppose to be unique even after company has gone through M&A) and gvkey. We dont. 
+
+February:
+
+makematrix.py: Find Internal (Self), Forward and Backward Citations in the given files. 
+
+
+March
+
+Running Sikuli automation on Sandeep’s data. 
+Convert.sikuli: Convert DL file to ##h       
+Symmetrize.sikuli: Symmetrize the Matrix
+
+On the symmetrized matrix, run 4 procedures:
+
+Closeness.sikuli  
+Degree Centrality.sikuli  
+Structural Holes.sikuli
+Eigenvector.sikuli 
